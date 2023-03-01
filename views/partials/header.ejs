@@ -1,0 +1,79 @@
+<header>
+    <nav class="navBar">
+
+        <div class="dropdown">
+            <button class="btn btn-secondary " type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                id="burger">
+                <i class="fa-sharp fa-solid fa-bars"></i>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Perfil</a></li>
+                <li><a class="dropdown-item" href="/productCart">Carrito</a></li>
+                <li><a class="dropdown-item" href="/contacto">Contacto</a></li>
+                <li><a class="dropdown-item" href="/nosotros">Nosotros</a></li>
+                <li><a class="dropdown-item" href="/users/register">Registrarse</a></li>
+                <li><a class="dropdown-item" href="/users/login">Login</a></li>
+                <li><a class="dropdown-item" href="/products">Ensaladas</a></li>
+            </ul>
+        </div>
+
+        <div class="logo">
+            <a href="/" class="logotipo"><img src="/images/LOGO.png" alt="logo"></a>
+            <a href="/"><img src="/images/Lima.png" alt="Lima"></a>
+        </div>
+
+        <div class="headerMenu">
+            <a href="/nosotros"><b>Nosotros</b></a>
+            <a href="/products"><b>Ensaladas</b></a>
+            <a href="/contacto"><b>Contacto</b></a>
+            <% if (locals.isLogged) { %>
+                <% if (locals.userLogged.email=='admin@admin.com' ) { %>
+                    <a href="/products/create" id="agregarEnsalada" style="margin-left: 15px;"><b>Agregar Ensalada</b></a>
+                    <% } %>
+                        <a href="/users/profile"><img src="/images/avatars/<%=locals.userLogged.avatar %>" width="40"
+                                height="35" style="border-radius: 100%"></a>
+
+                <div class="right">
+                    <li class="seccion"><a href="/users/logout"><b>Cerrar sesión</b></a></li>
+                </div>
+            <% } else { %>
+                    <div class="right">
+                        <a href="/users/login"><b>Iniciar sesión</b></a>
+                    </div>
+                    <div class="right">
+                        <a href="/users/register"><b>Registrarse</b></a>
+                    </div>
+            <% } %>
+            <div>
+                <button class="carritoNavBar" type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    🛒
+                </button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Carrito de Compras</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <table id="tablaProductos" class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <td>Nombre</td>
+                                        <td>Cantidad</td>
+                                        <td>precio</td>
+                                    </tr>
+                                </th>
+                            </table>
+                        <div class="modal-body" id="carrito-contenedor">
+                        </div>
+                        <p class="precioProducto">Precio total: $<span id="precioTotal">0</span></p>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" id="carritoCerrar" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" id="vaciar-carrito" class="btn btn-primary">Vaciar</button>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </div>
+    </nav>
+</header>

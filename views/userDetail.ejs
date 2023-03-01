@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head', {pageTitle: 'LIMA' }); %>
+    <%- include('./partials/header', {pageTitle: 'LIMA' }); %>
+
+
+        <body>
+            <div class="perfil">INFORMACIÓN DE USUARIO
+
+                <label>
+                    <%= user.full_name %>
+                </label>
+                <label>
+                    <%= user.adress.street %>
+                </label>
+                <label>
+                    <%= user.phone %>
+                </label>
+                <label>
+                    <%= user.email %>
+                </label>
+                <a href="/users/profile"> MI PERFIL </a>
+                <a href="/users/edit"> EDITAR DATOS </a>
+                <form action="/users/delete?_method=DELETE" method="POST">
+                    <p>
+                        <button type="submit" class="botonPanel">DESUSCRIBIRME</button>
+                    </p>
+                </form>
+            </div>
+            <script src="/js/carro.js"></script>
+        </body>
+        <%- include('partials/footer') %>
+
+</html>
