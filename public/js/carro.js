@@ -47,7 +47,7 @@ const pintarCarrito = (carrito) => {
    console.log(carrito);
    precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.amount * prod.price, 0);
 };
-fetch('http://localhost:3000/products/productsJson')
+fetch('/products/productsJson')
    .then((res) => res.json())
    .then((data) => {
       data.forEach((producto) => {
