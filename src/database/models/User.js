@@ -8,6 +8,7 @@ module.exports = function (sequelize, DataTypes) {
       password: { type: DataTypes.STRING },
       phone: { type: DataTypes.INTEGER },
       adress_id: { type: DataTypes.INTEGER },
+      user_type_id: { type: DataTypes.INTEGER },
       avatar: { type: DataTypes.STRING },
    };
 

@@ -46,7 +46,7 @@ email varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
 password varchar(250) COLLATE utf8_unicode_ci NOT NULL, -- CONSULTAR TIPO DE DATO PARA CIFRAR LA CONTRASEÑA
 phone int(20) unsigned NOT NULL,
 adress_id int(99) unsigned NOT NULL,
-user_type_id int(10) unsigned NOT NULL,
+user_type_id int(10) unsigned NOT NULL DEFAULT 1,
 avatar varchar(250) NULL,
 created_at timestamp NULL DEFAULT NULL,
 updated_at timestamp NULL DEFAULT NULL,
