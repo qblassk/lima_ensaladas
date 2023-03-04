@@ -2,6 +2,11 @@ const contenedorProductos = document.getElementById('contenedor-productos');
 const productosEnCarro = document.getElementById('carrito-contenedor');
 const precioTotal = document.getElementById('precioTotal');
 const botonVaciar = document.getElementById('vaciar-carrito');
+
+const resumenPagarForm = document.getElementById('resumen-pagar-form');
+const botonComprar = document.getElementById('comprar-pagar');
+const formularioPost = document.getElementById('formulario-post');
+
 let carro = JSON.parse(localStorage.getItem('carrito'));
 console.log(carro);
 let carrito = [];
@@ -107,6 +112,11 @@ fetch('/products/productsJson')
          }
          localStorage.setItem('carrito', JSON.stringify(carrito));
          pintarCarrito(carrito);
+
+         resumenPagarForm.innerHTML = `      
+            <input type="hidden" name="title" value="${carrito[0].name}">
+            <input type="hidden" name="price" value="${carrito[0].price}">           
+            `;
       };
    });
 
@@ -135,6 +145,10 @@ const eliminarDelCarrito = (prodId) => {
          background: 'linear-gradient(to right, rgba(119, 194, 101, 0.9), rgba(6, 115, 107, 0.8))',
       },
    }).showToast();
-
-   console.log(carrito);
 };
+
+/* botonComprar.addEventListener('click', (e) => {
+   axios
+      .post('http://localhost:3000/payments', carrito)
+      .then((res) => (window.location.href = res.data.response.body.init_point));
+}); */

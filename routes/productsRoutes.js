@@ -31,4 +31,7 @@ router.put('/edit/:id', upload.single('image'), validateCreateEditProduct, produ
 // Elimina producto
 router.delete('/delete/:id', productsController.delete);
 
+// Pagar un producto
+router.post('/payments', productsController.payments);
+
 module.exports = router;

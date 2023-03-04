@@ -1,5 +1,8 @@
 const db = require('../src/database/models/index');
 const { validationResult } = require('express-validator');
+const mercadopago = require('mercadopago');
+
+mercadopago.configure({ access_token: process.env.MERCADOPAGO_KEY });
 
 const controller = {
    data: (req, res) => {
@@ -93,6 +96,42 @@ const controller = {
       db.Product.findByPk(req.params.id).then(function (product) {
          return res.render('productCart', { product: product });
       });
+   },
+
+   payments: (req, res) => {
+      console.log(req.body.title);
+      console.log(req.body.price);
+
+      let price = req.body.price;
+      let title = req.body.title;
+
+      let preference = {
+         items: [
+            {
+               id: 123,
+               title: title,
+               currency_id: 'ARS',
+               picture_url: 'http://http://localhost:3000/images/products/ensalada-brie.png',
+               category_id: 'art',
+               quantity: 1,
+               unit_price: price,
+            },
+         ],
+         back_urls: {
+            success: 'http://http://localhost:3000',
+            failure: '',
+            pending: '',
+         },
+         auto_return: 'approved',
+         binary_mode: true,
+      };
+      mercadopago.preferences
+         .create(preference)
+         .then((response) => {
+            res.status(200).send({ response });
+         })
+         .catch((error) => res.status(400).send({ error }));
+      /* return res.redirect('http://localhost:3000/'); */
    },
 };
 

@@ -4,6 +4,10 @@ const cookieParser = require('cookie-parser');
 const app = express();
 const session = require('express-session');
 const methodOverrride = require('method-override');
+const morgan = require('morgan');
+const cors = require('cors');
+
+require('dotenv').config();
 
 //middlewares
 const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware');
@@ -27,6 +31,7 @@ app.use(
    })
 );
 
+app.use(cors());
 app.use(cookieParser());
 app.use(userLoggedMiddleware);
 /* app.use(logMiddleware); */
@@ -36,6 +41,7 @@ app.use(express.json());
 app.use(methodOverrride('_method'));
 const publicFolderPath = path.resolve('public');
 app.use(express.static(publicFolderPath));
+app.use(morgan('dev'));
 
 app.use('/', mainRoutes);
 app.use('/products', productsRoutes);
