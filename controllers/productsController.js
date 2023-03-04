@@ -102,8 +102,8 @@ const controller = {
       console.log(req.body.title);
       console.log(req.body.price);
 
-      let price = req.body.price;
-      let title = req.body.title;
+      let price = 950;
+      let title = 'CALA';
 
       let preference = {
          items: [
