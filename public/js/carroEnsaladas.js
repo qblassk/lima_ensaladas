@@ -15,6 +15,8 @@ botonVaciar.addEventListener('click', () => {
       position: 'right',
       style: {
          background: 'linear-gradient(to right, rgba(119, 194, 101, 0.9), rgba(6, 115, 107, 0.8))',
+         marginTop: '11vh',
+         marginRight: '7vw',
       },
    }).showToast();
 });
@@ -87,6 +89,8 @@ fetch('/products/productsJson')
                   position: 'right',
                   style: {
                      background: 'linear-gradient(to right, rgba(119, 194, 101, 0.9), rgba(6, 115, 107, 0.8))',
+                     marginTop: '11vh',
+                     marginRight: '7vw',
                   },
                }).showToast();
             });
@@ -135,6 +139,8 @@ const eliminarDelCarrito = (prodId) => {
       position: 'right',
       style: {
          background: 'linear-gradient(to right, rgba(119, 194, 101, 0.9), rgba(6, 115, 107, 0.8))',
+         marginTop: '11vh',
+         marginRight: '7vw',
       },
    }).showToast();
 
