@@ -145,7 +145,5 @@ const eliminarDelCarrito = (prodId) => {
 
 botonComprar.addEventListener('click', (e) => {
    e.preventDefault();
-   axios
-      .post('http://localhost:3000/products/payments', carrito)
-      .then((res) => (window.location.href = res.data.response.body.init_point));
+   axios.post('/products/payments', carrito).then((res) => (window.location.href = res.data.response.body.init_point));
 });
