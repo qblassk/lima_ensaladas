@@ -42,6 +42,9 @@ Nosotros:
    z-index: 2;
 
 }
+.precioProducto{
+   color: black;
+}
 .modal-backdrop{
    z-index: 0;
 }
@@ -77,6 +80,7 @@ Nosotros:
    border: transparent;
    border-radius: 15%;
    background: linear-gradient(to right, rgba(6, 115, 107, 1), rgba(6, 115, 107, 1));
+   margin-right: 8vw;
 }
 #agregarEnsalada{
    text-align: center;
