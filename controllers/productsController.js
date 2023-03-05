@@ -99,26 +99,26 @@ const controller = {
    },
 
    payments: (req, res) => {
-      console.log(req.body.title);
-      console.log(req.body.price);
-
-      let price = 950;
-      let title = 'CALA';
-
+      const carrito = req.body;
+      const carritoNames = carrito.map((element) => {
+         return element.amount + '-' + element.name;
+      });
+      const title = carritoNames.toString();
+      const total = carrito.reduce((acc, prod) => acc + prod.amount * prod.price, 0);
       let preference = {
          items: [
             {
                id: 123,
                title: title,
                currency_id: 'ARS',
-               picture_url: 'http://http://localhost:3000/images/products/ensalada-brie.png',
+               picture_url: 'http://localhost:3000/images/products/ensalada-brie.png',
                category_id: 'art',
                quantity: 1,
-               unit_price: price,
+               unit_price: total,
             },
          ],
          back_urls: {
-            success: 'http://http://localhost:3000',
+            success: 'http://limaensaladas-production-ecc3.up.railway.app',
             failure: '',
             pending: '',
          },
@@ -131,7 +131,6 @@ const controller = {
             res.status(200).send({ response });
          })
          .catch((error) => res.status(400).send({ error }));
-      /* return res.redirect('http://localhost:3000/'); */
    },
 };
 
