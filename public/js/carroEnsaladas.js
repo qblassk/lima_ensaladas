@@ -2,6 +2,7 @@ const contenedorProductos = document.getElementById('contenedor-productos');
 const productosEnCarro = document.getElementById('carrito-contenedor');
 const precioTotal = document.getElementById('precioTotal');
 const botonVaciar = document.getElementById('vaciar-carrito');
+const botonComprar = document.getElementById('comprar-pagar');
 let carrito = JSON.parse(localStorage.getItem('carrito'));
 
 botonVaciar.addEventListener('click', () => {
@@ -146,3 +147,7 @@ const eliminarDelCarrito = (prodId) => {
 
    console.log(carrito);
 };
+botonComprar.addEventListener('click', (e) => {
+   e.preventDefault();
+   axios.post('/products/payments', carrito).then((res) => (window.location.href = res.data.response.body.init_point));
+});
